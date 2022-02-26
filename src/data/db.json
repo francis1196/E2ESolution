@@ -1,10 +1,6 @@
 {
     "industries": [
         {
-            "id": 0,
-            "name": "industry 0"
-        },
-        {
             "id": 1,
             "name": "industry 1"
         },
@@ -87,6 +83,43 @@
         {
             "id": 21,
             "name": "industry 21"
+        }
+    ],
+    "devices":[
+        {
+            "id": 1,
+            "name": "device 1",
+            "additionTime": "26-02-2022 19:10",
+            "fee": "99.99",
+            "industryId": 1
+        },
+        {
+            "id": 2,
+            "name": "device 2",
+            "additionTime": "26-02-2022 19:10",
+            "fee": "99.99",
+            "industryId": 2
+        },
+        {
+            "id": 3,
+            "name": "device 3",
+            "additionTime": "26-02-2022 19:10",
+            "fee": "99.99",
+            "industryId": 3
+        },
+        {
+            "id": 4,
+            "name": "device 4",
+            "additionTime": "26-02-2022 19:10",
+            "fee": "99.99",
+            "industryId": 4
+        },
+        {
+            "id": 5,
+            "name": "device 5",
+            "additionTime": "26-02-2022 19:10",
+            "fee": "99.99",
+            "industryId": 5
         }
     ]
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Industry, IndustryResponse } from 'src/app/interfaces/industry';
-import { RestApiService } from 'src/app/services/rest-api.service';
+import { IndustryApiService } from 'src/app/services/industry-api.service';
 
 @Component({
   selector: 'app-industries',
@@ -14,14 +14,14 @@ export class IndustriesComponent implements OnInit {
   actualPage: number = 1;
   actualQuery: string = "";
 
-  constructor(public restApi: RestApiService) { }
+  constructor(public industryApi: IndustryApiService) { }
 
   ngOnInit(): void {
     this.loadIndustries();
   }
 
   loadIndustries(): void {
-    this.restApi.getIndustries(this.actualPage, this.actualQuery).subscribe((data: IndustryResponse) => {
+    this.industryApi.getIndustries(this.actualPage, this.actualQuery).subscribe((data: IndustryResponse) => {
       this.numberOfPages = data.pages;
       this.Industries = data.industries;
     });

@@ -8,13 +8,15 @@ import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './components/pagination/pagination.component';
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from '@angular/forms';
+import { WarehouseComponent } from './pages/warehouse/warehouse.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndustriesComponent,
     PaginationComponent,
-    FilterComponent
+    FilterComponent,
+    WarehouseComponent
   ],
   imports: [
     BrowserModule,

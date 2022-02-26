@@ -1,0 +1,8 @@
+<div class="warehouse">
+    Warehouse:
+    <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
+    <div *ngFor="let device of Devices">
+        {{device.id}} - {{device.name}}
+    </div>
+    <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
+</div>
