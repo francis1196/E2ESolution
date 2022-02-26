@@ -6,17 +6,21 @@ import { AppComponent } from './app.component';
 import { IndustriesComponent } from './pages/industries/industries.component';
 import { HttpClientModule } from '@angular/common/http';
 import { PaginationComponent } from './components/pagination/pagination.component';
+import { FilterComponent } from './components/filter/filter.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
     IndustriesComponent,
-    PaginationComponent
+    PaginationComponent,
+    FilterComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

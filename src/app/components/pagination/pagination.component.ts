@@ -13,7 +13,7 @@ export class PaginationComponent implements OnInit {
   actualPage: number = 1;
 
   get hasPrev(): boolean{
-    return this.actualPage >= this.numberOfPages;
+    return this.actualPage > 1;
   }
   get hasNext(): boolean{
     return this.actualPage < this.numberOfPages;

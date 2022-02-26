@@ -1,6 +1,6 @@
 <div class="industries">
     Industries:
-
+    <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
     <div *ngFor="let industry of Industries">
         {{industry.id}} - {{industry.name}}
     </div>

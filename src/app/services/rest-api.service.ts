@@ -1,7 +1,7 @@
-import { Industry } from './../iterfaces/industry';
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, retry, throwError } from 'rxjs';
+import { Industry, IndustryResponse } from './../interfaces/industry';
 
 @Injectable({
   providedIn: 'root'
@@ -9,29 +9,32 @@ import { catchError, map, Observable, retry, throwError } from 'rxjs';
 export class RestApiService {
 
   apiURL = 'http://localhost:3000';
+  page = 1;
 
   constructor(private http: HttpClient) { }
-  
-  getNumberOfPages(): Observable<number> {
-    let url = `${this.apiURL}/industries?_page=1`;
+
+  // HttpClient API get() method => Fetch all industries list
+  getAllIndustries(): Observable<IndustryResponse> {
+    let url = `${this.apiURL}/industries`
     return this.http
-      .get<any>(url, {observe: 'response'})
-      .pipe(map(data => Math.ceil(Number(data.headers.get('X-Total-Count'))/10), catchError(this.handleError)));
+      .get<IndustryResponse>(url, {observe: 'response'})
+      .pipe(
+        map(data => new IndustryResponse(Math.ceil(Number(data.headers.get('X-Total-Count'))/10), 
+        (data.body ? data.body : []) as Industry[])), 
+        catchError(this.handleError)
+      );
   }
 
-  // HttpClient API get() method => Fetch industries list
-  getAllIndustries(): Observable<Industry[]> {
+  // HttpClient API get() method => Fetch industries list with query
+  getIndustries(page: number, query: string): Observable<IndustryResponse> {
+    let url = `${this.apiURL}/industries?_page=${page}${query}`;
     return this.http
-      .get<Industry[]>(this.apiURL + '/industries')
-      .pipe(retry(1), catchError(this.handleError));
-  }
-
-  // HttpClient API get() method => Fetch industries list
-  getIndustriesPage(page: number): Observable<Industry[]> {
-    let url = `${this.apiURL}/industries?_page=${page}`;
-    return this.http
-      .get<Industry[]>(url)
-      .pipe(retry(1), catchError(this.handleError));
+      .get<IndustryResponse>(url, {observe: 'response'})
+      .pipe(
+        map(data => new IndustryResponse(Math.ceil(Number(data.headers.get('X-Total-Count'))/10), 
+        (data.body ? data.body : []) as Industry[])), 
+        catchError(this.handleError)
+      );
   }
 
   // Error handling

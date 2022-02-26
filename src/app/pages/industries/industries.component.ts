@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Industry } from 'src/app/iterfaces/industry';
+import { Industry, IndustryResponse } from 'src/app/interfaces/industry';
 import { RestApiService } from 'src/app/services/rest-api.service';
 
 @Component({
@@ -11,27 +11,30 @@ export class IndustriesComponent implements OnInit {
 
   Industries: Industry[] = [];
   numberOfPages: number = 1;
+  actualPage: number = 1;
+  actualQuery: string = "";
 
   constructor(public restApi: RestApiService) { }
 
   ngOnInit(): void {
-    this.pagesNumber();
-    this.loadIndustries(1);
+    this.loadIndustries();
   }
 
-  pagesNumber(){
-    this.restApi.getNumberOfPages().subscribe((data) => {
-      this.numberOfPages = data;
-    })
-  }
-
-  loadIndustries(page: number) {
-    return this.restApi.getIndustriesPage(page).subscribe((data: Industry[]) => {
-      this.Industries = data;
+  loadIndustries(): void {
+    this.restApi.getIndustries(this.actualPage, this.actualQuery).subscribe((data: IndustryResponse) => {
+      this.numberOfPages = data.pages;
+      this.Industries = data.industries;
     });
   }
 
-  onPageChange(page: number){
-    this.loadIndustries(page);
+  onPageChange(page: number): void{
+    this.actualPage = page;
+    this.loadIndustries();
+  }
+
+  onFilterChange(query: string): void {
+    this.actualQuery = query;
+    this.actualPage = 1;
+    this.loadIndustries();
   }
 }
