@@ -1,0 +1,56 @@
+{
+    "industries": [
+        {
+            "id": 0,
+            "name": "industry 0"
+        },
+        {
+            "id": 1,
+            "name": "industry 1"
+        },
+        {
+            "id": 2,
+            "name": "industry 2"
+        },
+        {
+            "id": 3,
+            "name": "industry 3"
+        },
+        {
+            "id": 4,
+            "name": "industry 4"
+        },
+        {
+            "id": 5,
+            "name": "industry 5"
+        },
+        {
+            "id": 6,
+            "name": "industry 6"
+        },
+        {
+            "id": 7,
+            "name": "industry 7"
+        },
+        {
+            "id": 8,
+            "name": "industry 8"
+        },
+        {
+            "id": 9,
+            "name": "industry 9"
+        },
+        {
+            "id": 10,
+            "name": "industry 10"
+        },
+        {
+            "id": 11,
+            "name": "industry 11"
+        },
+        {
+            "id": 12,
+            "name": "industry 12"
+        }
+    ]
+}
