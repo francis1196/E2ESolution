@@ -1,0 +1,8 @@
+<div class="industries">
+    Industries:
+
+    <div *ngFor="let industry of Industries">
+        {{industry.id}} - {{industry.name}}
+    </div>
+    <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
+</div>
