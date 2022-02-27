@@ -21,7 +21,7 @@ export class WarehouseComponent implements OnInit {
   }
 
   loadWarehouse(): void {
-    this.deviceApi.getWarehouse(this.actualPage, this.actualQuery).subscribe((data: WarehouseResponse) => {
+    this.deviceApi.getDevices(this.actualPage, this.actualQuery).subscribe((data: WarehouseResponse) => {
       this.numberOfPages = data.pages;
       this.Devices = data.devices;
     });

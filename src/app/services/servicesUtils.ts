@@ -1,4 +1,12 @@
+import { HttpHeaders } from "@angular/common/http";
 import { throwError } from "rxjs";
+
+// Http Options
+export const httpOptions = {
+  headers: new HttpHeaders({
+    'Content-Type': 'application/json',
+  }),
+};
 
 export default class Utils {
   

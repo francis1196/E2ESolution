@@ -37,4 +37,10 @@ export class IndustriesComponent implements OnInit {
     this.actualPage = 1;
     this.loadIndustries();
   }
+
+  deleteIndustry(id: number){
+    this.industryApi.deleteEmployee(id).subscribe(() =>{
+      this.loadIndustries();
+    });
+  }
 }

@@ -2,7 +2,8 @@
     Industries:
     <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
     <div *ngFor="let industry of Industries">
-        {{industry.id}} - {{industry.name}}
+        {{industry.id}} - {{industry.name}} <a routerLink="/edit-industry/{{industry.id}}">Edit</a> <a (click)="deleteIndustry(industry.id)">Delete</a>
     </div>
     <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
+    <a routerLink="/add-industry">Add</a>
 </div>

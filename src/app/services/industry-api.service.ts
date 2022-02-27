@@ -2,20 +2,21 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { catchError, map, Observable, retry, } from 'rxjs';
 import { Industry, IndustryResponse } from './../interfaces/industry';
-import Utils from './servicesUtils'
+import Utils from './servicesUtils';
+import { httpOptions } from './servicesUtils';
 
 @Injectable({
   providedIn: 'root'
 })
 export class IndustryApiService {
 
-  apiURL = 'http://localhost:3000/industries';
+  apiURL = 'http://localhost:3000';
 
   constructor(private http: HttpClient) { }
 
   // HttpClient API get() method => Fetch all industries list
   getAllIndustries(): Observable<IndustryResponse> {
-    let url = `${this.apiURL}`
+    let url = `${this.apiURL}/industries`
     return this.http
       .get<IndustryResponse>(url, {observe: 'response'})
       .pipe(
@@ -28,7 +29,7 @@ export class IndustryApiService {
 
   // HttpClient API get() method => Fetch industries list with query
   getIndustries(page: number, query: string): Observable<IndustryResponse> {
-    let url = `${this.apiURL}?_page=${page}${query}`;
+    let url = `${this.apiURL}/industries?_page=${page}${query}&_sort=name`;
     return this.http
       .get<IndustryResponse>(url, {observe: 'response'})
       .pipe(
@@ -37,5 +38,48 @@ export class IndustryApiService {
         (data.body ? data.body : []) as Industry[])), 
         catchError(Utils.handleError)
       );
+  }
+
+  // HttpClient API get() method => Fetch industries list with query
+  getIndustry(id: number): Observable<Industry> {
+    let url = `${this.apiURL}/industries/${id}`;
+    return this.http
+      .get<Industry>(url)
+      .pipe(
+        retry(1),
+        catchError(Utils.handleError)
+      );
+  }
+
+  // HttpClient API get() method => Fetch industries list with query
+  addIndustry(industry: Industry): Observable<Industry>{
+    let url = `${this.apiURL}/industries`;
+    return this.http
+      .post<Industry>(
+        url,
+        JSON.stringify(industry), 
+        httpOptions
+      )
+      .pipe(retry(1), catchError(Utils.handleError))
+  }
+
+  // HttpClient API get() method => Fetch industries list with query
+  updateIndustry(industry: Industry): Observable<Industry> {
+    let url = `${this.apiURL}/industries/${industry.id}`;
+    return this.http
+      .put<Industry>(
+        url,
+        JSON.stringify(industry),
+        httpOptions
+      )
+      .pipe(retry(1), catchError(Utils.handleError));
+  }
+
+  // HttpClient API get() method => Fetch industries list with query
+  deleteEmployee(id: any) {
+    let url = `${this.apiURL}/industries/${id}`;
+    return this.http
+      .delete<Industry>(url, httpOptions)
+      .pipe(retry(1), catchError(Utils.handleError));
   }
 }

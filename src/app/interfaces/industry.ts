@@ -3,6 +3,11 @@ export interface Industry {
     name: string,
 }
 
+export const InitialIndustry: Industry = {
+    id: 0,
+    name: ""
+}
+
 export class IndustryResponse {
     pages: number;
     industries: Industry[];

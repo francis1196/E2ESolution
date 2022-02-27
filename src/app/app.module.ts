@@ -9,6 +9,8 @@ import { PaginationComponent } from './components/pagination/pagination.componen
 import { FilterComponent } from './components/filter/filter.component';
 import { FormsModule } from '@angular/forms';
 import { WarehouseComponent } from './pages/warehouse/warehouse.component';
+import { IndustryManagerComponent } from './pages/industry-manager/industry-manager.component';
+import { DeviceManagerComponent } from './pages/device-manager/device-manager.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { WarehouseComponent } from './pages/warehouse/warehouse.component';
     IndustriesComponent,
     PaginationComponent,
     FilterComponent,
-    WarehouseComponent
+    WarehouseComponent,
+    IndustryManagerComponent,
+    DeviceManagerComponent
   ],
   imports: [
     BrowserModule,
