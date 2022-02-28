@@ -1,3 +1,87 @@
 @import "assets/styles/typography";
 @import "assets/styles/variables";
 @import "assets/styles/base";
+
+.manager-form{
+    display: flex;
+    flex-direction: column;
+    padding: 100px 200px;
+
+    .invalid{
+        color: $dark-red;
+    }
+    
+    .correct{
+        color: $green;
+    }
+
+    .invalid, .correct{
+        margin-bottom: 20px;
+    }
+
+    input, select{
+        margin-bottom: 30px;
+    }
+
+    span{
+        margin-bottom: 10px;
+    }
+}
+
+.list-container{
+    display: flex;
+    flex-direction: column;
+    padding: 0px 100px;
+    height: 80vh;
+
+    .title{
+        position: relative;
+
+        .fa-plus{
+            position: absolute;
+            top: 10px;
+            right: 0;
+            font-size: 24px;
+        }
+    }
+
+    .card-list{
+        .card{
+            position: relative;
+            background-color: $white;
+            padding: 30px;
+            margin: 20px 0px;
+    
+            &__actions{
+                position:absolute;
+                top: 0;
+                right: 0;
+                margin: 30px;
+            }
+    
+            .fa-pen{
+                margin-right: 10px;
+            }
+
+            &:hover:not(.unclickable){
+                transform: scale(1.035);
+                transition: transform .4s ease;
+                cursor: pointer;
+            }
+        }
+
+        .empty{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            
+            .fa-exclamation{
+                font-size: 30px;
+            }
+        }
+    }
+
+    .ng-fa-icon{
+        cursor: pointer;
+    }
+}

@@ -1,6 +1,7 @@
-import { Device, WarehouseResponse } from './../../interfaces/warehouse';
+import { DeviceExpanded, WarehouseExpandedResponse } from './../../interfaces/warehouse';
 import { Component, OnInit } from '@angular/core';
 import { DeviceApiService } from 'src/app/services/device-api.service';
+import { faPen, faTrash, faPlus, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-warehouse',
@@ -9,10 +10,15 @@ import { DeviceApiService } from 'src/app/services/device-api.service';
 })
 export class WarehouseComponent implements OnInit {
 
-  Devices: Device[] = [];
+  Devices: DeviceExpanded[] = [];
   numberOfPages: number = 1;
   actualPage: number = 1;
   actualQuery: string = "";
+
+  faPen = faPen;
+  faTrash = faTrash;
+  faPlus = faPlus;
+  faCircleExclamation = faCircleExclamation;
 
   constructor(public deviceApi: DeviceApiService) { }
 
@@ -21,9 +27,9 @@ export class WarehouseComponent implements OnInit {
   }
 
   loadWarehouse(): void {
-    this.deviceApi.getDevices(this.actualPage, this.actualQuery).subscribe((data: WarehouseResponse) => {
+    this.deviceApi.getDevicesExpanded(this.actualPage, this.actualQuery).subscribe((data: WarehouseExpandedResponse) => {
       this.numberOfPages = data.pages;
-      this.Devices = data.devices;
+      this.Devices = data.devices;  
     });
   }
 

@@ -17,6 +17,25 @@ export class DeviceManagerComponent implements OnInit {
   device: Device = InitialDevice;
   industries: Industry[] = [];
 
+  get validateForm(): string{
+    var res: string[] = [];
+
+    if(this.device.name == ""){
+      res.push("The name is required");
+    }
+    if(this.device.fee == null){
+      res.push("The fee is required");
+    }
+    if(this.device.number == 0 || this.device.number == null || this.device.number % 1 != 0 || this.device.number > 100){
+      res.push("The number of devices must be from 1 to 100, it is required and cannot be decimal")
+    }
+    if(this.device.industryId == 0){
+      res.push("The industry is required")
+    }
+    
+    return res.join(", ");
+  }
+
   constructor(
     public deviceApi: DeviceApiService,
     public industryApi: IndustryApiService,
@@ -39,30 +58,12 @@ export class DeviceManagerComponent implements OnInit {
     }
   }
 
-  validateForm(): string{
-    var res: string[] = [];
-
-    if(this.device.name == ""){
-      res.push("The name is required");
-    }
-    if(this.device.fee == null){
-      res.push("The fee is required");
-    }
-    if(this.device.number == 0 || this.device.number % 1 != 0){
-      res.push("The number of devices is required and cant be decimal")
-    }
-    if(this.device.industryId == 0){
-      res.push("The industry is required")
-    }
-    
-    return res.join(", ");
-  }
-
   onSave(){
-    if (this.validateForm() != "") {
-      console.log("invalid", this.validateForm());
+    if (this.validateForm) {
       return;
     }
+    
+    this.device.fee = Number(this.device.fee.toFixed(2));
 
     if(this.isAddMode){
       this.deviceApi.addDevice(this.device).subscribe(() => {

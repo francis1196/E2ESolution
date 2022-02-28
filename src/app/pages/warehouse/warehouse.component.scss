@@ -1,0 +1,36 @@
+@import "/src/assets/styles/variables";
+
+.warehouse{
+    height: 100%;
+    overflow: scroll;
+
+    .card{
+        &__title{
+            margin-bottom: 40px;
+            .name{
+                font-size: 2rem;
+                margin-right: 20px;
+            }
+            .industry{
+                font-size: 18px;
+            }
+        }
+
+        &__info{
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+
+            .price{
+                span{
+                    font-size: 2rem;
+                    margin-left: 10px;
+                }
+
+                .fee{
+                    color: $dark-red;
+                }
+            }
+        }
+    }
+}

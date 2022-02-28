@@ -1,4 +1,20 @@
 <div class="industry-manager">
-    <input type="text" [(ngModel)]="industry.name">
-    <button (click)="onSave()">Save</button>
+    <div class="manager-form">
+        <div class="title">
+            <h1 *ngIf="isAddMode">New industry</h1>
+            <h1 *ngIf="!isAddMode">Edit industry</h1>
+        </div>
+        <span *ngIf="validateForm; else allCorrect" class="invalid">
+            <b>* {{validateForm}}</b>
+        </span>
+        <ng-template #allCorrect>
+            <span class="correct" >
+                <b>All fields are correct!</b>
+            </span>
+        </ng-template>
+    
+        <span>Name</span>
+        <input type="text" [(ngModel)]="industry.name">
+        <button [disabled]="validateForm" (click)="onSave()">Save</button>
+    </div>
 </div>

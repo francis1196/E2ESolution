@@ -1,7 +1,7 @@
 import { Observable, retry, map, catchError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Device, WarehouseResponse } from '../interfaces/warehouse';
+import { Device, DeviceExpanded, WarehouseExpandedResponse, WarehouseResponse } from '../interfaces/warehouse';
 import Utils from './servicesUtils';
 import { httpOptions } from './servicesUtils';
 
@@ -16,7 +16,7 @@ export class DeviceApiService {
 
   // HttpClient API get() method => Fetch Warehouse list with query
   getDevices(page: number, query: string): Observable<WarehouseResponse> {
-    let url = `${this.apiURL}/devices?_page=${page}${query}`;
+    let url = `${this.apiURL}/devices?_page=${page}${query}&_sort=name`;
     return this.http
       .get<WarehouseResponse>(url, {observe: 'response'})
       .pipe(
@@ -27,9 +27,22 @@ export class DeviceApiService {
       );
   }
 
+  // HttpClient API get() method => Fetch Warehouse list with query
+  getDevicesExpanded(page: number, query: string): Observable<WarehouseExpandedResponse> {
+    let url = `${this.apiURL}/devices?_expand=industry&_page=${page}${query}&_sort=name`;
+    return this.http
+      .get<WarehouseExpandedResponse>(url, {observe: 'response'})
+      .pipe(
+        retry(1),
+        map(data => new WarehouseExpandedResponse(Math.ceil(Number(data.headers.get('X-Total-Count'))/10), 
+        (data.body ? data.body : []) as DeviceExpanded[])), 
+        catchError(Utils.handleError)
+      );
+  }
+
   // HttpClient API get() method => Fetch Device list for industry with query
   getDevicesWithIndustry(industryId: number, page: number, query: string): Observable<WarehouseResponse> {
-    let url = `${this.apiURL}/devices/${industryId}/devices?_page=${page}${query}`;
+    let url = `${this.apiURL}/devices/${industryId}/devices?_page=${page}${query}&_sort=name`;
     return this.http
       .get<WarehouseResponse>(url, {observe: 'response'})
       .pipe(

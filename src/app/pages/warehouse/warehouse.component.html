@@ -1,9 +1,45 @@
 <div class="warehouse">
-    Warehouse:
-    <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
-    <div *ngFor="let device of Devices">
+    <div class="search">
+        <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
+    </div>
+    <div class="list-container">
+        <div class="title">
+            <h1>Warehouse:</h1>
+            <fa-icon class="fa-plus" [icon]="faPlus" routerLink="/add-device"></fa-icon>
+        </div>
+        <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
+        <div class="card-list">
+            <div *ngIf="Devices.length > 0">
+                <div class="card unclickable" *ngFor="let device of Devices">
+                    <div class="card__title">
+                        <span class="name"><b>{{device.name}}</b></span>
+                        <span class="industry">{{device.industry.name}}</span>
+                    </div>
+                    <div class="card__info">
+                        <span>{{device.additionTime}}</span>
+                        <div class="price">
+                            <span class="number"><b>{{device.number}}</b></span>
+                            <span class="cross">x</span>
+                            <span class="fee"><b>{{device.fee}} Є</b></span>
+                        </div>
+                    </div>
+                    
+                    <div class="card__actions">
+                        <fa-icon class="fa-pen" [icon]="faPen" routerLink="/edit-device/{{device.id}}"></fa-icon>
+                        <fa-icon class="fa-trash" [icon]="faTrash" (click)="deleteDevice(device.id)"></fa-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="empty" *ngIf="Devices.length == 0">
+                <fa-icon class="fa-exclamation" [icon]="faCircleExclamation"></fa-icon>
+                <h2>No results found</h2>
+            </div>
+        </div>
+    </div>
+
+    <!-- <div *ngFor="let device of Devices">
         {{device.id}} - {{device.name}} <a routerLink="/edit-device/{{device.id}}">Edit</a> <a (click)="deleteDevice(device.id)">Delete</a>
     </div>
     <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
-    <a routerLink="/add-device">Add</a>
+    <a routerLink="/add-device">Add</a> -->
 </div>

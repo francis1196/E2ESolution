@@ -13,6 +13,16 @@ export class IndustryManagerComponent implements OnInit {
   isAddMode: boolean = true;
   industry: Industry = InitialIndustry;
 
+  get validateForm(): string{
+    var res: string[] = [];
+
+    if(this.industry.name == ""){
+      res.push("The name is required");
+    }
+    
+    return res.join(", ");
+  }
+
   constructor(
     public industryApi: IndustryApiService,
     public actRoute: ActivatedRoute,
@@ -31,6 +41,10 @@ export class IndustryManagerComponent implements OnInit {
   }
 
   onSave(){
+    if(this.validateForm){
+      return;
+    }
+
     console.log("onSave", this.industry);
     if(this.isAddMode){
       this.industryApi.addIndustry(this.industry).subscribe(() => {

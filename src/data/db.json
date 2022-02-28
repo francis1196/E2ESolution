@@ -133,6 +133,22 @@
       "fee": 15.52,
       "number": "21",
       "industryId": 16
+    },
+    {
+      "id": 8,
+      "name": "Test device",
+      "additionTime": "2022-02-28T17:56:20.860Z",
+      "fee": 2.12,
+      "number": 24,
+      "industryId": 17
+    },
+    {
+      "id": 9,
+      "name": "Test device 2",
+      "additionTime": "28/2/2022",
+      "fee": 0.04,
+      "number": 1,
+      "industryId": 16
     }
   ]
 }
