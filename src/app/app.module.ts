@@ -12,6 +12,7 @@ import { WarehouseComponent } from './pages/warehouse/warehouse.component';
 import { IndustryManagerComponent } from './pages/industry-manager/industry-manager.component';
 import { DeviceManagerComponent } from './pages/device-manager/device-manager.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

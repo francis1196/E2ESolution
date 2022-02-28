@@ -1,9 +1,27 @@
 <div class="industries">
-    Industries:
-    <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
-    <div *ngFor="let industry of Industries">
-        {{industry.id}} - {{industry.name}} <a routerLink="/edit-industry/{{industry.id}}">Edit</a> <a (click)="deleteIndustry(industry.id)">Delete</a>
+    <div class="search">
+        <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
     </div>
-    <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
-    <a routerLink="/add-industry">Add</a>
+    <div class="industries-container">
+        <div class="title">
+            <h1>Industries:</h1>
+            <fa-icon class="fa-plus" [icon]="faPlus" routerLink="/add-industry"></fa-icon>
+        </div>
+        <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
+        <div class="card-list">
+            <div *ngIf="Industries.length > 0">
+                <div class="card" *ngFor="let industry of Industries">
+                    <h2>{{industry.name}}</h2>
+                    <div class="card__actions">
+                        <fa-icon class="fa-pen" [icon]="faPen" routerLink="/edit-industry/{{industry.id}}"></fa-icon>
+                        <fa-icon class="fa-trash" [icon]="faTrash" (click)="deleteIndustry(industry.id)"></fa-icon>
+                    </div>
+                </div>
+            </div>
+            <div class="empty" *ngIf="Industries.length == 0">
+                <fa-icon class="fa-exclamation" [icon]="faCircleExclamation"></fa-icon>
+                <h2>No results found</h2>
+            </div>
+        </div>
+    </div>
 </div>

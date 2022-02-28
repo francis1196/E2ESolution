@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
-  constructor() { }
-
-  ngOnInit(): void {
+  links = [
+    {path: "/industries", name: "Industries"},
+    {path: "/warehouse", name: "Warehouse"},
+  ];
+  
+  get url():string{
+    return this.router.url;
   }
+
+  constructor(private router: Router) { }
+
+  ngOnInit(): void { }
 
 }

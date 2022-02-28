@@ -1,5 +1,8 @@
 import { Order } from './../../interfaces/filter';
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
+import { faSort, faSortUp, faSortDown } from '@fortawesome/free-solid-svg-icons';
+import { faArrowUp, faArrowDown, faArrowRightArrowLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowDownAZ, faArrowDownZA } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-filter',
@@ -10,6 +13,7 @@ export class FilterComponent implements OnInit {
 
   @Output() filterQuery = new EventEmitter<string>();
 
+  faOrder = faArrowDownZA;
   searchText: string = "";
   order: Order = Order.Default;
 
@@ -26,13 +30,13 @@ export class FilterComponent implements OnInit {
   changeOrder(): void {
     switch (this.order) {
       case Order.Default:
-        this.order = Order.ASC;
-        break;
       case Order.ASC:
         this.order = Order.DESC;
+        this.faOrder = faArrowDownAZ;
         break;
       case Order.DESC:
-        this.order = Order.Default
+        this.order = Order.ASC;
+        this.faOrder = faArrowDownZA;
         break;
     }
     this.changeFilter();

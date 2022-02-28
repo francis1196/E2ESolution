@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Industry, IndustryResponse } from 'src/app/interfaces/industry';
 import { IndustryApiService } from 'src/app/services/industry-api.service';
+import { faPen, faTrash, faPlus, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-industries',
@@ -8,6 +9,11 @@ import { IndustryApiService } from 'src/app/services/industry-api.service';
   styleUrls: ['./industries.component.scss']
 })
 export class IndustriesComponent implements OnInit {
+
+  faPen = faPen;
+  faTrash = faTrash;
+  faPlus = faPlus;
+  faCircleExclamation = faCircleExclamation;
 
   Industries: Industry[] = [];
   numberOfPages: number = 1;

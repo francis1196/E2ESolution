@@ -1,0 +1,21 @@
+@import "/src/assets/styles/variables";
+
+.sidebar{
+    display: flex;
+    flex-direction: column;
+    width: 200px;
+    height: 100%;
+    background-image: linear-gradient(25deg, $dark-red 0%,  $red 100%);
+
+    a{
+        text-align: center;
+        padding: 30px 20px;
+        text-decoration: none;
+        color: $text-white;
+        font-size: 24px;
+
+        &:hover, &.selected{
+            background-color: $dark-red;
+        }
+    }
+}

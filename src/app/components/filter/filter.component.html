@@ -1,6 +1,7 @@
 <div class="filter">
-    Filter:
     <input type="text" [(ngModel)]="searchText" (ngModelChange)="search()" placeholder="Search...">
-    <button (click)="changeOrder()">Order</button>
+    <div class="order">
+        <fa-icon class="fa-order" [icon]="faOrder" (click)="changeOrder()"></fa-icon>
+    </div>
 </div>
 

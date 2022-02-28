@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { faAngleRight, faAngleLeft } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-pagination',
@@ -10,6 +11,8 @@ export class PaginationComponent implements OnInit {
   @Input() numberOfPages: number = 0;
   @Output() page = new EventEmitter<number>();
 
+  faAngleRight = faAngleRight;
+  faAngleLeft = faAngleLeft;
   actualPage: number = 1;
 
   get hasPrev(): boolean{

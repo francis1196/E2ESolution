@@ -1,5 +1,5 @@
 <div class="pagination">
-    Pagination: 
-    <button *ngIf="hasPrev" (click)="prevPage()">prev</button>
-    <button *ngIf="hasNext" (click)="nextPage()">next</button>
+    <button [disabled]="!hasPrev" (click)="prevPage()"><fa-icon class="fa-left" [icon]="faAngleLeft"></fa-icon></button>
+    <div class="actual-page"><span>{{actualPage}}</span></div>
+    <button [disabled]="!hasNext" (click)="nextPage()"><fa-icon class="fa-right" [icon]="faAngleRight"></fa-icon></button>
 </div>
