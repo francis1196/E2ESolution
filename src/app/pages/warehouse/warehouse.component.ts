@@ -37,4 +37,10 @@ export class WarehouseComponent implements OnInit {
     this.actualPage = 1;
     this.loadWarehouse();
   }
+
+  deleteDevice(id: number){
+    this.deviceApi.deleteDevice(id).subscribe(() =>{
+      this.loadWarehouse();
+    });
+  }
 }

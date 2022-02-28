@@ -95,6 +95,7 @@
       "name": "device 1",
       "additionTime": "26-02-2022 19:10",
       "fee": "99.99",
+      "number": "21",
       "industryId": 1
     },
     {
@@ -102,6 +103,7 @@
       "name": "device 2",
       "additionTime": "26-02-2022 19:10",
       "fee": "99.99",
+      "number": "21",
       "industryId": 2
     },
     {
@@ -109,6 +111,7 @@
       "name": "device 3",
       "additionTime": "26-02-2022 19:10",
       "fee": "99.99",
+      "number": "21",
       "industryId": 3
     },
     {
@@ -116,6 +119,7 @@
       "name": "device 4",
       "additionTime": "26-02-2022 19:10",
       "fee": "99.99",
+      "number": "21",
       "industryId": 4
     },
     {
@@ -123,7 +127,16 @@
       "name": "device 5",
       "additionTime": "26-02-2022 19:10",
       "fee": "99.99",
+      "number": "21",
       "industryId": 5
+    },
+    {
+      "id": 7,
+      "name": "test device 2",
+      "additionTime": "2022-02-28T09:42:29.216Z",
+      "fee": 15.52,
+      "number": "21",
+      "industryId": 16
     }
   ]
 }

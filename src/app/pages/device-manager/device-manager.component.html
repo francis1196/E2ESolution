@@ -1,0 +1,12 @@
+<div class="device-manager">
+    <div>
+        <input type="text" [(ngModel)]="device.name">
+        <input type="number" step='0.01' placeholder='0.00' min="0" [(ngModel)]="device.fee">
+        <input type="number" step="1" min="1" max="100" [(ngModel)]="device.number">
+        <select  [(ngModel)]="device.industryId">
+            <option [ngValue]="null" disabled>Select industry</option>
+            <option *ngFor="let industry of industries" [ngValue]="industry.id">{{industry.name}}</option>
+          </select>
+        <button (click)="onSave()">Save</button>
+    </div>
+</div>

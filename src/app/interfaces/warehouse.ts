@@ -1,12 +1,21 @@
-import { Industry } from "./industry";
+import { Industry, InitialIndustry } from "./industry";
 
 export interface Device {
     id: number,
     name: string,
     additionTime: Date,
     fee: number,
-    industryId: number,
-    industry: Industry,
+    number: number,
+    industryId: number
+}
+
+export const InitialDevice: Device = {
+    id: 0,
+    name: "",
+    additionTime: new Date,
+    fee: 0,
+    number: 1,
+    industryId: 0
 }
 
 export class WarehouseResponse {
