@@ -15,6 +15,7 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { DevicesComponent } from './components/devices/devices.component';
 import { IndustryComponent } from './pages/industry/industry.component';
+import { MessagePopupComponent } from './components/message-popup/message-popup.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,8 @@ import { IndustryComponent } from './pages/industry/industry.component';
     DeviceManagerComponent,
     SidebarComponent,
     DevicesComponent,
-    IndustryComponent
+    IndustryComponent,
+    MessagePopupComponent
   ],
   imports: [
     BrowserModule,

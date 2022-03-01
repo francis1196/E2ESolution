@@ -5,6 +5,7 @@ import { InitialDevice } from './../../interfaces/warehouse';
 import { Component, OnInit } from '@angular/core';
 import { Device } from 'src/app/interfaces/warehouse';
 import { Industry } from 'src/app/interfaces/industry';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-device-manager',
@@ -39,6 +40,7 @@ export class DeviceManagerComponent implements OnInit {
   constructor(
     public deviceApi: DeviceApiService,
     public industryApi: IndustryApiService,
+    public messageService: MessageService,
     public actRoute: ActivatedRoute,
     public router: Router,
   ) { }
@@ -47,13 +49,27 @@ export class DeviceManagerComponent implements OnInit {
     let id = this.actRoute.snapshot.params['id'];
     this.isAddMode = !id;
     
-    this.industryApi.getAllIndustries().subscribe((data) => {
-      this.industries = data.industries;
+    this.industryApi.getAllIndustries().subscribe({
+      next: (data) => {
+       this.industries = data.industries;
+      },
+      error: () => {
+        this.messageService.messagesSubject.next([
+          "Error getting industries"
+        ]);
+      }
     });
 
     if(!this.isAddMode){
-      this.deviceApi.getDevice(id).subscribe((data) => {
-        this.device = data;
+      this.deviceApi.getDevice(id).subscribe({
+        next: (data) => {
+          this.device = data;
+        },
+        error: () => {
+          this.messageService.messagesSubject.next([
+            "Error getting the device"
+          ]);
+        }
       });
     }
   }
@@ -66,12 +82,32 @@ export class DeviceManagerComponent implements OnInit {
     this.device.fee = Number(this.device.fee.toFixed(2));
 
     if(this.isAddMode){
-      this.deviceApi.addDevice(this.device).subscribe(() => {
-        this.router.navigate(['/warehouse']);
+      this.deviceApi.addDevice(this.device).subscribe({
+        next: () => {
+          this.messageService.messagesSubject.next([
+            "Device added successfully"
+          ]);
+          this.router.navigate(['/warehouse']);
+        },
+        error: () => {
+          this.messageService.messagesSubject.next([
+            "Error adding the device"
+          ]);
+        }
       });
     }else{
-      this.deviceApi.updateDevice(this.device).subscribe(() => {
-        this.router.navigate(['/warehouse']);
+      this.deviceApi.updateDevice(this.device).subscribe({
+        next: () => {
+          this.messageService.messagesSubject.next([
+            "Device updated successfully"
+          ]);
+          this.router.navigate(['/warehouse']);
+        },
+        error: () => {
+          this.messageService.messagesSubject.next([
+            "Error updating the device"
+          ]);
+        }
       });
     }
   }

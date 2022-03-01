@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Industry, IndustryResponse } from 'src/app/interfaces/industry';
 import { IndustryApiService } from 'src/app/services/industry-api.service';
 import { faPen, faTrash, faPlus, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-industries',
@@ -20,16 +21,26 @@ export class IndustriesComponent implements OnInit {
   actualPage: number = 1;
   actualQuery: string = "";
 
-  constructor(public industryApi: IndustryApiService) { }
+  constructor(
+    public industryApi: IndustryApiService, 
+    public messageService: MessageService,
+    ) { }
 
   ngOnInit(): void {
     this.loadIndustries();
   }
 
   loadIndustries(): void {
-    this.industryApi.getIndustries(this.actualPage, this.actualQuery).subscribe((data: IndustryResponse) => {
-      this.numberOfPages = data.pages;
-      this.Industries = data.industries;
+    this.industryApi.getIndustries(this.actualPage, this.actualQuery).subscribe({
+      next: (data: IndustryResponse) => {
+        this.numberOfPages = data.pages;
+        this.Industries = data.industries;
+      },
+      error: () => {
+        this.messageService.messagesSubject.next([
+          "Error getting industries"
+        ]);
+      }
     });
   }
 
@@ -46,14 +57,15 @@ export class IndustriesComponent implements OnInit {
 
   deleteIndustry($event: any, id: number){
     $event.stopPropagation();
-    this.industryApi.deleteEmployee(id).subscribe(() =>{
-      this.loadIndustries();
+    this.industryApi.deleteEmployee(id).subscribe({
+      next: () =>{
+        this.loadIndustries();
+      },
+      error: () => {
+        this.messageService.messagesSubject.next([
+          "Error deleting the industry"
+        ]);
+      }
     });
-  }
-
-  onCardClick(event: any, id: number){
-    console.log(event.target);
-    console.log("click");
-    
   }
 }

@@ -11,14 +11,13 @@ export const httpOptions = {
 export default class Utils {
   
   // Error handling
-  static handleError(error: any) {
+  static handleError(error: any){
     let errorMessage = '';
     if (error.error instanceof ErrorEvent) {
-      errorMessage = error.error.message;
+      errorMessage = `Error: ${error.error.message}`;
     } else {
-      errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
+      errorMessage = `Error: ${error.message}`;
     }
-    window.alert(errorMessage);
     return throwError(() => {
       return errorMessage;
     });

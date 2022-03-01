@@ -14,7 +14,7 @@ export class DeviceApiService {
 
   constructor(private http: HttpClient) { }
 
-  // HttpClient API get() method => Fetch Warehouse list with query
+  // HttpClient API get() method => Fetch Devices list
   getDevices(page: number, query: string): Observable<WarehouseResponse> {
     let url = `${this.apiURL}/devices?_page=${page}${query}&_sort=name`;
     return this.http
@@ -27,7 +27,7 @@ export class DeviceApiService {
       );
   }
 
-  // HttpClient API get() method => Fetch Warehouse list with query
+  // HttpClient API get() method => Fetch Devices list with industry
   getDevicesExpanded(page: number, query: string): Observable<WarehouseExpandedResponse> {
     let url = `${this.apiURL}/devices?_expand=industry&_page=${page}${query}&_sort=name`;
     return this.http
@@ -40,7 +40,7 @@ export class DeviceApiService {
       );
   }
 
-  // HttpClient API get() method => Fetch Device list for industry with query
+  // HttpClient API get() method => Fetch Device list with industries
   getDevicesWithIndustry(industryId: number, page: number, query: string): Observable<WarehouseExpandedResponse> {
     let url = `${this.apiURL}/industry/${industryId}/devices?_expand=industry&_page=${page}${query}&_sort=name`;
     return this.http
@@ -53,7 +53,7 @@ export class DeviceApiService {
       );
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API get() method => Fetch device
   getDevice(id: number): Observable<Device> {
     let url = `${this.apiURL}/devices/${id}`;
     return this.http
@@ -64,7 +64,7 @@ export class DeviceApiService {
       );
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API post() method => Add device
   addDevice(device: Device): Observable<Device>{
     let url = `${this.apiURL}/devices`;
     return this.http
@@ -76,7 +76,7 @@ export class DeviceApiService {
       .pipe(retry(1), catchError(Utils.handleError))
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API put() method => Update device
   updateDevice(device: Device): Observable<Device> {
     let url = `${this.apiURL}/devices/${device.id}`;
     return this.http
@@ -88,7 +88,7 @@ export class DeviceApiService {
       .pipe(retry(1), catchError(Utils.handleError));
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API delete() method => Delete device
   deleteDevice(id: any) {
     let url = `${this.apiURL}/devices/${id}`;
     return this.http

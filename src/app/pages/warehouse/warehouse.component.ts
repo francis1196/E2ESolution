@@ -2,6 +2,7 @@ import { DeviceExpanded, WarehouseExpandedResponse } from './../../interfaces/wa
 import { Component, OnInit } from '@angular/core';
 import { DeviceApiService } from 'src/app/services/device-api.service';
 import { faPlus } from '@fortawesome/free-solid-svg-icons';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-warehouse',
@@ -17,7 +18,10 @@ export class WarehouseComponent implements OnInit {
 
   faPlus = faPlus;
 
-  constructor(public deviceApi: DeviceApiService) { }
+  constructor(
+    public deviceApi: DeviceApiService, 
+    public messageService: MessageService
+  ) { }
 
   ngOnInit(): void {
     this.loadWarehouse();
@@ -42,8 +46,14 @@ export class WarehouseComponent implements OnInit {
   }
 
   deleteDevice(id: number){
-    this.deviceApi.deleteDevice(id).subscribe(() =>{
-      this.loadWarehouse();
-    });
+    this.deviceApi.deleteDevice(id).subscribe(
+      () =>{
+        this.loadWarehouse();
+      }, 
+      (error: string) => {
+        this.messageService.messagesSubject.next([
+          error
+        ]);
+      });
   }
 }

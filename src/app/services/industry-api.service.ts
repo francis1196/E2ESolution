@@ -27,7 +27,7 @@ export class IndustryApiService {
       );
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API get() method => Fetch industries list
   getIndustries(page: number, query: string): Observable<IndustryResponse> {
     let url = `${this.apiURL}/industries?_page=${page}${query}&_sort=name`;
     return this.http
@@ -40,7 +40,7 @@ export class IndustryApiService {
       );
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API get() method => Fetch industry
   getIndustry(id: number): Observable<Industry> {
     let url = `${this.apiURL}/industries/${id}`;
     return this.http
@@ -51,7 +51,7 @@ export class IndustryApiService {
       );
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API post() method => Add industry
   addIndustry(industry: Industry): Observable<Industry>{
     let url = `${this.apiURL}/industries`;
     return this.http
@@ -63,7 +63,7 @@ export class IndustryApiService {
       .pipe(retry(1), catchError(Utils.handleError))
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API put() method => Update industry
   updateIndustry(industry: Industry): Observable<Industry> {
     let url = `${this.apiURL}/industries/${industry.id}`;
     return this.http
@@ -75,7 +75,7 @@ export class IndustryApiService {
       .pipe(retry(1), catchError(Utils.handleError));
   }
 
-  // HttpClient API get() method => Fetch industries list with query
+  // HttpClient API delete() method => Delete industry
   deleteEmployee(id: any) {
     let url = `${this.apiURL}/industries/${id}`;
     return this.http

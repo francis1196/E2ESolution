@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Industry, InitialIndustry } from 'src/app/interfaces/industry';
 import { IndustryApiService } from 'src/app/services/industry-api.service';
+import { MessageService } from 'src/app/services/message.service';
 
 @Component({
   selector: 'app-industry-manager',
@@ -25,6 +26,7 @@ export class IndustryManagerComponent implements OnInit {
 
   constructor(
     public industryApi: IndustryApiService,
+    public messageService: MessageService,
     public actRoute: ActivatedRoute,
     public router: Router
   ) { }
@@ -34,8 +36,15 @@ export class IndustryManagerComponent implements OnInit {
     this.isAddMode = !id;
 
     if(!this.isAddMode){
-      this.industryApi.getIndustry(id).subscribe((data) => {
-        this.industry = data;
+      this.industryApi.getIndustry(id).subscribe({
+        next: (data) => {
+          this.industry = data;
+        },
+        error: () => {
+          this.messageService.messagesSubject.next([
+            "Error getting the industry"
+          ]);
+        }
       });
     }
   }
@@ -45,14 +54,27 @@ export class IndustryManagerComponent implements OnInit {
       return;
     }
 
-    console.log("onSave", this.industry);
     if(this.isAddMode){
-      this.industryApi.addIndustry(this.industry).subscribe(() => {
-        this.router.navigate(['/industries']);
+      this.industryApi.addIndustry(this.industry).subscribe({
+        next: () => {
+          this.router.navigate(['/industries']);
+        },
+        error: () => {
+          this.messageService.messagesSubject.next([
+            "Error adding the industry"
+          ]);
+        }
       });
     }else{
-      this.industryApi.updateIndustry(this.industry).subscribe(() => {
-        this.router.navigate(['/industries']);
+      this.industryApi.updateIndustry(this.industry).subscribe({
+        next: () => {
+          this.router.navigate(['/industries']);
+        },
+        error: () => {
+          this.messageService.messagesSubject.next([
+            "Error updating the industry"
+          ]);
+        }
       });
     }
   }

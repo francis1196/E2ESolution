@@ -1,0 +1,18 @@
+<div class="message-popup">
+    <div *ngFor="let message of messages; index as messageIndex">
+      <div
+        class="alert"
+        [ngClass]="{
+          'alert-danger': isError(messageIndex),
+          'alert-success': !isError(messageIndex)
+        }"
+        role="alert"
+        (click)="onClickMessageClose(messageIndex)"
+      >
+            <fa-icon class="fa-xmark" [icon]="faXmark"></fa-icon>
+            <fa-icon *ngIf="isError(messageIndex)" class="fa-alert" [icon]="faCircleExclamation"></fa-icon>
+            <fa-icon *ngIf="!isError(messageIndex)" class="fa-alert" [icon]="faCircleCheck"></fa-icon>
+            {{ message }}
+      </div>
+    </div>
+  </div>
