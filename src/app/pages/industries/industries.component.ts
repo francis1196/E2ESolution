@@ -44,9 +44,16 @@ export class IndustriesComponent implements OnInit {
     this.loadIndustries();
   }
 
-  deleteIndustry(id: number){
+  deleteIndustry($event: any, id: number){
+    $event.stopPropagation();
     this.industryApi.deleteEmployee(id).subscribe(() =>{
       this.loadIndustries();
     });
+  }
+
+  onCardClick(event: any, id: number){
+    console.log(event.target);
+    console.log("click");
+    
   }
 }

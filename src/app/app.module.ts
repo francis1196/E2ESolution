@@ -13,6 +13,8 @@ import { IndustryManagerComponent } from './pages/industry-manager/industry-mana
 import { DeviceManagerComponent } from './pages/device-manager/device-manager.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { DevicesComponent } from './components/devices/devices.component';
+import { IndustryComponent } from './pages/industry/industry.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     WarehouseComponent,
     IndustryManagerComponent,
     DeviceManagerComponent,
-    SidebarComponent
+    SidebarComponent,
+    DevicesComponent,
+    IndustryComponent
   ],
   imports: [
     BrowserModule,

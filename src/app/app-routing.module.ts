@@ -3,11 +3,13 @@ import { RouterModule, Routes } from '@angular/router';
 import { DeviceManagerComponent } from './pages/device-manager/device-manager.component';
 import { IndustriesComponent } from './pages/industries/industries.component';
 import { IndustryManagerComponent } from './pages/industry-manager/industry-manager.component';
+import { IndustryComponent } from './pages/industry/industry.component';
 import { WarehouseComponent } from './pages/warehouse/warehouse.component';
 
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'industries' },
   { path: 'industries', component: IndustriesComponent },
+  { path: 'industry/:id', component: IndustryComponent },
   { path: 'add-industry', component: IndustryManagerComponent },
   { path: 'edit-industry/:id', component: IndustryManagerComponent },
   { path: 'warehouse', component: WarehouseComponent },

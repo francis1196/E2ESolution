@@ -1,0 +1,12 @@
+@import "/src/assets/styles/variables";
+
+.industry{
+    height: 100%;
+    overflow: scroll;
+
+    .industry-title{
+        margin-top: 20px;
+        font-size: 3rem;
+        color: $dark-red;
+    }
+}

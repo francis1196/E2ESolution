@@ -1,10 +1,11 @@
-<div class="warehouse">
+<div class="industry">
     <div class="search">
         <app-filter (filterQuery)="onFilterChange($event)"></app-filter>
     </div>
     <div class="list-container">
+        <span class="industry-title"><b>{{Industry.id}}. {{Industry.name | uppercase}}</b></span>
         <div class="title">
-            <h1>Warehouse:</h1>
+            <h1>Devices:</h1>
             <fa-icon class="fa-plus" [icon]="faPlus" routerLink="/add-device"></fa-icon>
         </div>
         <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>

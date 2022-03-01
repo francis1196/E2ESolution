@@ -10,11 +10,11 @@
         <app-pagination [numberOfPages]="numberOfPages" (page)="onPageChange($event)" ></app-pagination>
         <div class="card-list">
             <div *ngIf="Industries.length > 0">
-                <div class="card" *ngFor="let industry of Industries">
+                <div class="card" *ngFor="let industry of Industries" [routerLink]="'/industry/' + industry.id">
                     <h2>{{industry.name}}</h2>
                     <div class="card__actions">
                         <fa-icon class="fa-pen" [icon]="faPen" routerLink="/edit-industry/{{industry.id}}"></fa-icon>
-                        <fa-icon class="fa-trash" [icon]="faTrash" (click)="deleteIndustry(industry.id)"></fa-icon>
+                        <fa-icon class="fa-trash" [icon]="faTrash" (click)="deleteIndustry($event, industry.id)"></fa-icon>
                     </div>
                 </div>
             </div>

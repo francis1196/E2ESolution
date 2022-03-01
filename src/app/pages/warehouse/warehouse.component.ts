@@ -1,7 +1,7 @@
 import { DeviceExpanded, WarehouseExpandedResponse } from './../../interfaces/warehouse';
 import { Component, OnInit } from '@angular/core';
 import { DeviceApiService } from 'src/app/services/device-api.service';
-import { faPen, faTrash, faPlus, faCircleExclamation } from '@fortawesome/free-solid-svg-icons';
+import { faPlus } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-warehouse',
@@ -15,10 +15,7 @@ export class WarehouseComponent implements OnInit {
   actualPage: number = 1;
   actualQuery: string = "";
 
-  faPen = faPen;
-  faTrash = faTrash;
   faPlus = faPlus;
-  faCircleExclamation = faCircleExclamation;
 
   constructor(public deviceApi: DeviceApiService) { }
 

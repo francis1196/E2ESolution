@@ -41,14 +41,14 @@ export class DeviceApiService {
   }
 
   // HttpClient API get() method => Fetch Device list for industry with query
-  getDevicesWithIndustry(industryId: number, page: number, query: string): Observable<WarehouseResponse> {
-    let url = `${this.apiURL}/devices/${industryId}/devices?_page=${page}${query}&_sort=name`;
+  getDevicesWithIndustry(industryId: number, page: number, query: string): Observable<WarehouseExpandedResponse> {
+    let url = `${this.apiURL}/industry/${industryId}/devices?_expand=industry&_page=${page}${query}&_sort=name`;
     return this.http
-      .get<WarehouseResponse>(url, {observe: 'response'})
+      .get<WarehouseExpandedResponse>(url, {observe: 'response'})
       .pipe(
         retry(1),
-        map(data => new WarehouseResponse(Math.ceil(Number(data.headers.get('X-Total-Count'))/10), 
-        (data.body ? data.body : []) as Device[])), 
+        map(data => new WarehouseExpandedResponse(Math.ceil(Number(data.headers.get('X-Total-Count'))/10), 
+        (data.body ? data.body : []) as DeviceExpanded[])), 
         catchError(Utils.handleError)
       );
   }
