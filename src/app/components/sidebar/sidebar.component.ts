@@ -1,5 +1,6 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { faIndustry, faMobileScreenButton } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
@@ -8,9 +9,12 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SidebarComponent implements OnInit {
 
+  faIndustry = faIndustry;
+  faMobileScreenButton = faMobileScreenButton;
+
   links = [
-    {path: "/industries", name: "Industries"},
-    {path: "/warehouse", name: "Warehouse"},
+    {path: "/industries", name: "Industries", icon: faIndustry},
+    {path: "/warehouse", name: "Warehouse", icon: faMobileScreenButton},
   ];
   
   get url():string{

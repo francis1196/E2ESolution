@@ -1,9 +1,11 @@
+@import "/src/assets/styles/variables";
+
 .filter{
     display: flex;
     height: 60px;
     padding: 40px 100px;
-    background-color: white;
-    box-shadow: 0 2px 8px -2px rgb(0 0 0 / 16%);
+    background-color: $white;
+    box-shadow: $light-shadow;
 
     input{
         width: 100%;

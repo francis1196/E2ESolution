@@ -16,7 +16,7 @@
                         <span class="industry">{{device.industry.name}}</span>
                     </div>
                     <div class="card__info">
-                        <span>{{device.additionTime}}</span>
+                        <span>{{device.additionTime | date:"MM/dd/yy HH:mm"}}</span>
                         <div class="price">
                             <span class="number"><b>{{device.number}}</b></span>
                             <span class="cross">x</span>

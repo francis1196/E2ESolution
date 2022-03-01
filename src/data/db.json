@@ -88,67 +88,11 @@
   "devices": [
     {
       "id": 1,
-      "name": "device 1",
-      "additionTime": "26-02-2022 19:10",
-      "fee": "99.99",
-      "number": "21",
+      "name": "Device 1",
+      "additionTime": "2022-02-28T18:50:42.672Z",
+      "fee": 45.14,
+      "number": 16,
       "industryId": 1
-    },
-    {
-      "id": 2,
-      "name": "device 2",
-      "additionTime": "26-02-2022 19:10",
-      "fee": "99.99",
-      "number": "21",
-      "industryId": 2
-    },
-    {
-      "id": 3,
-      "name": "device 3",
-      "additionTime": "26-02-2022 19:10",
-      "fee": "99.99",
-      "number": "21",
-      "industryId": 3
-    },
-    {
-      "id": 4,
-      "name": "device 4",
-      "additionTime": "26-02-2022 19:10",
-      "fee": "99.99",
-      "number": "21",
-      "industryId": 4
-    },
-    {
-      "id": 5,
-      "name": "device 5",
-      "additionTime": "26-02-2022 19:10",
-      "fee": "99.99",
-      "number": "21",
-      "industryId": 5
-    },
-    {
-      "id": 7,
-      "name": "test device 2",
-      "additionTime": "2022-02-28T09:42:29.216Z",
-      "fee": 15.52,
-      "number": "21",
-      "industryId": 16
-    },
-    {
-      "id": 8,
-      "name": "Test device",
-      "additionTime": "2022-02-28T17:56:20.860Z",
-      "fee": 2.12,
-      "number": 24,
-      "industryId": 17
-    },
-    {
-      "id": 9,
-      "name": "Test device 2",
-      "additionTime": "28/2/2022",
-      "fee": 0.04,
-      "number": 1,
-      "industryId": 16
     }
   ]
 }
