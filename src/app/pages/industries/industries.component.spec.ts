@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-
 import { IndustriesComponent } from './industries.component';
+import { HttpClientTestingModule } from '@angular/common/http/testing';
+import { IndustryApiService } from 'src/app/services/industry-api.service';
 
 describe('IndustriesComponent', () => {
   let component: IndustriesComponent;
@@ -8,7 +9,9 @@ describe('IndustriesComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      declarations: [ IndustriesComponent ]
+      declarations: [ IndustriesComponent ],
+      imports: [HttpClientTestingModule], 
+      providers: [IndustryApiService],
     })
     .compileComponents();
   });
