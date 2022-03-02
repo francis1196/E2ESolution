@@ -1,8 +1,8 @@
 <div class="device-manager">
     <div class="manager-form">
         <div class="title">
-            <h1 *ngIf="isAddMode">New industry</h1>
-            <h1 *ngIf="!isAddMode">Edit industry</h1>
+            <h1 *ngIf="isAddMode">New Device</h1>
+            <h1 *ngIf="!isAddMode">Edit Device</h1>
         </div>
         <span *ngIf="validateForm; else allCorrect" class="invalid">
             <b>* {{validateForm}}</b>

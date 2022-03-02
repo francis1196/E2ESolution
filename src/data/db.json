@@ -1,4 +1,154 @@
 {
-  "industries": [],
-  "devices": []
+  "industries": [
+    {
+      "id": 1,
+      "name": "Agriculture, Forestry, Fishing and Hunting"
+    },
+    {
+      "id": 2,
+      "name": "Utilities"
+    },
+    {
+      "id": 3,
+      "name": "Transportation and Warehousing"
+    },
+    {
+      "id": 4,
+      "name": "Information"
+    },
+    {
+      "id": 5,
+      "name": "Accommodation and Food Services"
+    },
+    {
+      "id": 6,
+      "name": "Administration, Business Support and Waste Management Services"
+    },
+    {
+      "id": 7,
+      "name": "Construction"
+    },
+    {
+      "id": 8,
+      "name": "Manufacturing"
+    },
+    {
+      "id": 9,
+      "name": "Educational Services"
+    },
+    {
+      "id": 10,
+      "name": "Mining"
+    },
+    {
+      "id": 11,
+      "name": "Arts, Entertainment and Recreation"
+    },
+    {
+      "id": 12,
+      "name": "Finance and Insurance"
+    },
+    {
+      "id": 13,
+      "name": "Healthcare and Social Assistance"
+    },
+    {
+      "id": 14,
+      "name": "Technology"
+    },
+    {
+      "id": 15,
+      "name": "Life Sciences"
+    }
+  ],
+  "devices": [
+    {
+      "id": 1,
+      "name": "PC Lenovo",
+      "additionTime": "2022-03-02T09:54:54.262Z",
+      "fee": 1440,
+      "number": 52,
+      "industryId": 14
+    },
+    {
+      "id": 2,
+      "name": "Mobile",
+      "additionTime": "2022-03-02T09:54:54.262Z",
+      "fee": 680,
+      "number": 24,
+      "industryId": 14
+    },
+    {
+      "id": 3,
+      "name": "Planter",
+      "additionTime": "2022-03-02T09:54:54.262Z",
+      "fee": 18000,
+      "number": 1,
+      "industryId": 1
+    },
+    {
+      "id": 4,
+      "name": "Tractor",
+      "additionTime": "2022-03-02T09:54:54.262Z",
+      "fee": 30000,
+      "number": 2,
+      "industryId": 1
+    },
+    {
+      "id": 5,
+      "name": "Truck",
+      "additionTime": "2022-03-02T09:54:54.262Z",
+      "fee": 90000,
+      "number": 2,
+      "industryId": 3
+    },
+    {
+      "id": 6,
+      "name": "HP",
+      "additionTime": "2022-03-02T10:09:52.638Z",
+      "fee": 600,
+      "number": 99,
+      "industryId": 4
+    },
+    {
+      "id": 7,
+      "name": "Toughpad",
+      "additionTime": "2022-03-02T10:09:52.638Z",
+      "fee": 1000.99,
+      "number": 5,
+      "industryId": 5
+    },
+    {
+      "id": 8,
+      "name": "Desktop PC",
+      "additionTime": "2022-03-02T10:09:52.638Z",
+      "fee": 599.9,
+      "number": 10,
+      "industryId": 6
+    },
+    {
+      "id": 9,
+      "name": "Smart board",
+      "additionTime": "2022-03-02T10:09:52.638Z",
+      "fee": 4999,
+      "number": 10,
+      "industryId": 9
+    },
+    {
+      "id": 10,
+      "name": "Graphic tablet",
+      "additionTime": "2022-03-02T10:09:52.638Z",
+      "fee": 2775,
+      "number": 14,
+      "industryId": 11
+    },
+    {
+      "id": 11,
+      "name": "XRay Machine",
+      "additionTime": "2022-03-02T10:09:52.638Z",
+      "fee": 235000,
+      "number": 1,
+      "industryId": 13
+    }
+  ]
 }
