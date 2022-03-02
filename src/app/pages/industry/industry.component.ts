@@ -1,3 +1,4 @@
+import { MessageService } from 'src/app/services/message.service';
 import { Industry, InitialIndustry } from 'src/app/interfaces/industry';
 import { IndustryApiService } from 'src/app/services/industry-api.service';
 import { Component, OnInit } from '@angular/core';
@@ -25,22 +26,39 @@ export class IndustryComponent implements OnInit {
   constructor(
     public industryApi: IndustryApiService,
     public deviceApi: DeviceApiService,
+    public messageService: MessageService,
     public actRoute: ActivatedRoute,
     public router: Router
     ) { }
 
   ngOnInit(): void {
     this.industryId = this.actRoute.snapshot.params['id'];
-    this.industryApi.getIndustry(this.industryId).subscribe((data) => {
-      this.Industry = data;
+
+    this.industryApi.getIndustry(this.industryId).subscribe({
+      next: (data) => {
+        this.Industry = data;
+      },
+      error: () => {
+        this.messageService.messagesSubject.next([
+          "Error getting the industry"
+        ]);
+        this.router.navigate(['/industries']);
+      }
     })
     this.loadDevices();
   }
 
   loadDevices(): void {
-    this.deviceApi.getDevicesWithIndustry(this.industryId, this.actualPage, this.actualQuery).subscribe((data: WarehouseExpandedResponse) => {
+    this.deviceApi.getDevicesWithIndustry(this.industryId, this.actualPage, this.actualQuery).subscribe({
+      next: (data: WarehouseExpandedResponse) => {
       this.numberOfPages = data.pages;
       this.Devices = data.devices;  
+      },
+      error: () => {
+        this.messageService.messagesSubject.next([
+          "Error getting the industry devices"
+        ]);
+      }
     });
   }
 
@@ -56,8 +74,15 @@ export class IndustryComponent implements OnInit {
   }
 
   deleteDevice(id: number){
-    this.deviceApi.deleteDevice(id).subscribe(() =>{
-      this.loadDevices();
+    this.deviceApi.deleteDevice(id).subscribe({
+      next: () =>{
+        this.loadDevices();
+      },
+      error: () => {
+        this.messageService.messagesSubject.next([
+          "Error deleting the industry"
+        ]);
+      }
     });
   }
 }

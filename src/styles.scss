@@ -30,6 +30,10 @@
     span{
         margin-bottom: 10px;
     }
+
+    @media (max-width: $md-start){
+        padding: 100px 10px;
+    }
 }
 
 .list-container{
@@ -55,7 +59,11 @@
             background-color: $white;
             padding: 30px;
             margin: 20px 0px;
-    
+            
+            &__title{
+                margin-top: 20px;
+            }
+
             &__actions{
                 position:absolute;
                 top: 0;
@@ -78,7 +86,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            
+            margin-top: 30px;
             .fa-exclamation{
                 font-size: 30px;
             }
@@ -87,5 +95,22 @@
 
     .ng-fa-icon{
         cursor: pointer;
+    }
+
+    @media (max-width: $md-start){
+        padding: 0 10px;
+
+        .card{
+            overflow: hidden;
+
+            &__title{
+                display: flex;
+                flex-direction: column;
+            }
+
+            &__info{
+                flex-direction: column;
+            }
+        }
     }
 }

@@ -1,6 +1,6 @@
 <div class="sidebar">
     <a *ngFor="let link of links" [ngClass]="url == link.path ? 'selected' : ''" [routerLink]="link.path">
         <fa-icon class="fa-icon" [icon]="link.icon"></fa-icon>
-        {{link.name}}
+        <span class="text">{{link.name}}</span>
     </a>
 <div>
