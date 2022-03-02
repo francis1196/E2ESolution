@@ -76,7 +76,7 @@ export class IndustryApiService {
   }
 
   // HttpClient API delete() method => Delete industry
-  deleteEmployee(id: any) {
+  deleteIndustry(id: any) {
     let url = `${this.apiURL}/industries/${id}`;
     return this.http
       .delete<Industry>(url, httpOptions)

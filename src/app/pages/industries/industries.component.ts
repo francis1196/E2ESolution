@@ -57,7 +57,7 @@ export class IndustriesComponent implements OnInit {
 
   deleteIndustry($event: any, id: number){
     $event.stopPropagation();
-    this.industryApi.deleteEmployee(id).subscribe({
+    this.industryApi.deleteIndustry(id).subscribe({
       next: () =>{
         this.loadIndustries();
       },
